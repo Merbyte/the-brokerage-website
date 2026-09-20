@@ -1,3 +1,7 @@
+> **HISTORICAL / REFERENCE ONLY:** This file records prior discovery or V1 validation. It is not a current visual authority. For current visual decisions use `docs/creative-direction-v2.md`. Where this file conflicts with V2, V2 wins.
+
+---
+
 # Hallmark Reference Validation — The Brokerage Advisory
 
 **Purpose:** Independent validation of `docs/design-reference-study.md` using the Hallmark skill's `study` verb. This is the audit gate required by `docs/design-inspiration.md` ("Before designing → run Hallmark in study mode") and by `docs/master-website-brief.md` §8, which places Hallmark at position 6 of the orchestration hierarchy.

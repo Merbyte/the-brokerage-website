@@ -393,111 +393,82 @@ Show phone, WhatsApp, email, map and public walk-in office address. Include the 
 
 ---
 
-# 7. UX/UI design system
+# 7. UX/UI design direction
 
-## Design personality
+The current visual authority is `docs/creative-direction-v2.md`.
 
-Premium, editorial, calm, sophisticated, credible and commercially mature.
+> **Black & Gold — Premium Financial Advisory**
+>
+> **CHAMBER × WORKS**
 
-## Visual direction
+This section intentionally stays high-level so it does not compete with V2.
 
-- Deep navy or obsidian backgrounds.
-- Warm ivory, stone and white light surfaces.
-- Restrained champagne-gold accents.
-- Editorial high-contrast serif for selective display headings.
-- Modern sans-serif for UI/body copy.
-- Wide editorial grid; generous whitespace.
-- High-quality real photography where approved.
-- Minimal, meaningful icons.
-- Low-to-moderate motion.
+## Visual principles
 
-## Suggested palette
+- Black is a primary architectural/structural brand colour.
+- Warm ivory and stone are important reading surfaces.
+- Gold is restrained and purposeful: primarily action, attention and active-state language.
+- Visual storytelling combines typography, financing diagrams, information graphics and documentary imagery where useful.
+- Page rhythm varies by content; do not use a fixed light/dark alternation.
+- Premium quality comes from hierarchy, composition, specificity, craft and interaction quality rather than luxury decoration.
+- Typography is to be tested/derived from V2; do not reinstate the previous sans-only decision.
+- Mobile is a deliberate composition, not a compressed desktop.
+
+## Founder palette basis
 
 | Role | Colour |
 |---|---|
-| Deep surface | `#0B172A` or approved obsidian equivalent |
-| Dark surface | `#111827` |
-| Primary text | `#172033` |
+| Obsidian black | `#0B0B0B` |
+| Rich black | `#111111` |
+| Charcoal | `#242424` |
+| Primary body text | `#172033` |
 | Warm background | `#F7F5F0` |
 | White surface | `#FFFFFF` |
-| Gold accent | `#C9A227` |
+| Champagne gold | `#C9A227` |
 | Light gold | `#E0C76A` |
-| Muted text | `#647084` |
-| Error | Accessible muted red |
-| Success | Accessible muted green |
 
-All final contrast combinations must pass WCAG-conscious testing.
+Final semantic tokens, contrast pairings and component usage belong in the re-derived design system.
 
 ## Anti-patterns
 
 Do not use:
+- Generic bento-grid structures as the default.
+- Fake dashboards.
+- Crypto/trading visual language.
+- Instant-approval loan-funnel visuals.
+- Casino/nightclub black-and-gold styling.
+- Excessive gradients, glow or glassmorphism.
+- Repetitive cards for every content block.
+- Fake social proof, unsupported claims or decorative institutional clichés.
+- Excessive motion or copied reference structures.
 
-- Generic bento-grid homepage.
-- Fake dashboard screenshots.
-- Crypto glow, huge gradients or glassmorphism.
-- Constant gold background or gold paragraph text.
-- Consumer-loan rate badges or “instant approval” elements.
-- Repetitive rounded cards for every paragraph.
-- Pulsing CTAs, decorative counters or fake social proof.
-- Excessive hover-scale, parallax or automatic reveals.
+# 8. Claude Code operating protocol
 
----
+## Authority order
 
-# 8. AI design-skill orchestration protocol
+1. `docs/master-website-brief.md`
+2. `docs/claims-and-compliance-rules.md`
+3. `docs/creative-direction-v2.md`
+4. Re-derived `design.md` + `design-system/the-brokerage-advisory/MASTER.md`
+5. Application code
 
-## Order of authority
+## Skills are optional
 
-1. This master brief and its compliance/claims boundaries.
-2. Project-specific design system file and `design.md`.
-3. Hallmark for reference study, originality review and launch audit.
-4. UI UX Pro Max for responsive UX, component and accessibility guidance.
-5. Frontend design skill for technical implementation.
-6. Art direction is carried by **Hallmark + UI UX Pro Max + the approved project design system; Super Design may be used only for optional concept exploration; Anti-Slop is the final design-quality audit gate.**
-7. Native/CSS transitions only for launch motion.
+Do not automatically invoke design or planning skills. Use ordinary Claude Code by default. A skill is opt-in only when the task materially benefits from it and the user explicitly approves it.
+
+A skill may assist or audit; it may not redefine the brand, strategy, claims or business facts.
 
 ## Workflow
 
-1. Use Hallmark `study` mode on references/screenshots; extract design DNA without copying. Hallmark's refusal layer governs which sources qualify — template demos and designer presentation shots are refused as structural sources and remain mood-only. Record the outcome in `docs/hallmark-reference-validation.md`.
-2. Use UI UX Pro Max to create `design-system/the-brokerage-advisory/MASTER.md` and page override files, plus a `design.md` at the project root so the site is treated as one unified brand system.
-3. Apply the approved visual settings via **Hallmark + UI UX Pro Max + the approved project design system**:
-   - Design variance: 5/10
-   - Visual density: 4/10
-   - Motion: native/CSS transitions only (see the motion constraints below)
-4. Build original components/pages using the approved system. Every page carries a distinct primary information archetype — see the service-page requirement below.
-5. Use **Super Design only for optional concept exploration**, never as the source of the shipped system.
-6. Run `hallmark audit` before launch, then the **Anti-Slop audit as the final design-quality gate**. Work the pre-launch checklist in `docs/hallmark-reference-validation.md` §5.
+Before design-system work, read the three current authority documents above. Derive the new design system from V2 rather than patching the old V1 system.
 
-## Responsive acceptance criterion
+## Responsive acceptance
 
-Verify at **320, 375, 414, 768, 1024 and 1440px**. **320px is the floor.** No horizontal overflow at any width; `overflow-x: hidden` / `clip` must not be used to conceal layout defects. Display headings use `overflow-wrap: anywhere` where required. No two-line clickable labels on buttons, navigation, footer links, breadcrumbs or CTAs.
+Verify at 320, 375, 414, 768, 1024 and 1440px. 320px is the floor. No horizontal overflow. Do not conceal defects with `overflow-x: hidden` or `overflow-x: clip`.
 
-## Service-page archetype variety
+## Motion
 
-Every page must have a **distinct primary information archetype**, derived from the shape of its own subject. Shared tokens and reusable components are required — colour, type, spacing, buttons, forms, disclaimers, header, footer and CTA band are identical everywhere — but no page may be a previous page with the nouns changed. Consistency lives in the system; variety lives in the composition. The per-page archetype table is in `docs/design-reference-study.md` §2.14.
-
-## Motion constraints
-
-- Animate **opacity and transform only**. No layout properties.
-- **Never animate focus rings**; focus is instant, at ≥3:1 contrast.
-- Use **named approved custom easing values**; the browser-default `ease` is not permitted.
-- `prefers-reduced-motion: reduce` removes non-essential motion or reduces it to a **maximum 150ms opacity transition**.
-- No scroll-arrival entrance animation. All content present and readable on load.
-
-## Development-only placeholder convention
-
-During development, unresolved assets are marked with these exact labels, in capitals, in an obviously unfinished internal style: `METRIC TO CONFIRM`, `APPROVED CASE STUDY REQUIRED`, `LICENSED IMAGE REQUIRED`, `DO NOT SHIP PLACEHOLDER`.
-
-**These exist in internal development only and must never reach public production.** At launch each placeholder is either resolved with approved content, or the module containing it is removed from the page entirely — not shipped empty, not stubbed, not hidden with CSS.
-
-## Hard guardrails
-
-- Never allow a skill to replace verified business facts.
-- Never copy a reference site, screenshot, image, exact layout or brand asset.
-- Do not let a visual skill introduce financial claims, data, testimonials or trust logos not approved in this brief.
-- Calculator must always display its illustration-only disclaimer.
-- Use `prefers-reduced-motion` and avoid unnecessary animation.
-
----
+Motion remains subordinate to usability and comprehension. Do not add a motion dependency without explicit approval.
 
 # 9. SEO, AEO and local SEO requirements
 

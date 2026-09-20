@@ -1,3 +1,7 @@
+> **HISTORICAL / REFERENCE ONLY:** This file records prior discovery or V1 validation. It is not a current visual authority. For current visual decisions use `docs/creative-direction-v2.md`. Where this file conflicts with V2, V2 wins.
+
+---
+
 # Design Reference Study — The Brokerage Advisory
 
 **Stage:** Visual discovery only. No design system, no components, no code, no final copy.

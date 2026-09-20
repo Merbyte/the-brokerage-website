@@ -80,32 +80,40 @@ The formula must be documented and tested. State explicitly whether it is simple
 
 The estimated monthly repayment calculator is required for launch. The following still require confirmation before it ships: the calculation method (simple interest vs. reducing-balance amortisation), the illustrative rate used, documented test cases, an assigned content owner and a review date.
 
-## Skill orchestration hierarchy
+## Documentation authority
 
-Verified against the installed toolchain. Order of authority — higher entries always win:
+Use this authority order:
 
-1. **Master brief and claims/compliance rules** — `docs/master-website-brief.md`, `docs/claims-and-compliance-rules.md`
-2. **Project design system and `design.md`** — `design-system/the-brokerage-advisory/`
-3. **Hallmark** — reference study, originality review and launch audit
-4. **UI UX Pro Max** — design system, responsive UX and components
-5. **Frontend Design** — implementation
-6. **Super Design** — optional concept exploration only
-7. **Superpowers** — process and planning support only
-8. **Anti-Slop audit skills** — `antislop`, `antislop-ui`, `antislop-human`, `antislop-layoutmobile`, `antislop-copywriting`
-9. **ECC specialists** — accessibility, SEO and performance only
-10. **Native/CSS transitions only** for launch motion
+1. **Business truth / scope:** `docs/master-website-brief.md`
+2. **Claims / compliance:** `docs/claims-and-compliance-rules.md`
+3. **Current creative direction:** `docs/creative-direction-v2.md`
+4. **Current design system:** `design.md` + `design-system/the-brokerage-advisory/MASTER.md` only after they are re-derived from V2
+5. **Implementation:** application code
 
-**Do not use ECC Taste.** `ecc:taste`, `ecc:taste-distillation` and `ecc:taste-application` are music-video and short-form-edit skills. They are not editorial art-direction skills and have no application to this project.
+Historical/reference documents do not outrank current project documents.
 
-**Do not use ECC motion skills, and do not add `motion/react` or any motion library, without founder approval.** Launch motion is native CSS transitions only. Adding a motion dependency is an architecture change and falls under the rule below on packages.
+### Current visual direction
 
-**Hallmark must refuse Webflow-template demos and Dribbble shots as structural sources.** The RedSun Webflow demo and the Estatio Dribbble shot are **mood-only** references, as is the Pinterest board. None may supply layout, grid, component, interaction, typography, colour values or code. See `docs/hallmark-reference-validation.md` §1.
+> **Black & Gold — Premium Financial Advisory**
+>
+> **CHAMBER × WORKS**
 
-**Responsive testing must include 320, 375, 414, 768, 1024 and 1440px.** 320px is the floor.
+The existing application is a superseded V1 visual prototype. Do not treat its current visual tokens, colour balance, typography or component composition as the design specification.
 
-Visual settings: design variance 5/10, motion intensity 2/10, visual density 4/10.
+### Skills are opt-in
 
-Guardrails: no skill may override verified business facts, introduce financial claims, data, testimonials or trust logos not approved in the brief, or replace the calculator disclaimer.
+Do not automatically invoke Claude Code skills. Ordinary Claude Code + current repository documents is the default.
+
+Use a specialist skill only when the task materially benefits from it and the user explicitly requests or approves it for that phase.
+
+A skill recommendation is never a founder decision and may not replace Creative Direction V2 with a different visual direction.
+
+### Current design-system state
+
+`design.md` and `design-system/the-brokerage-advisory/MASTER.md` are reset bridges until the new design system is derived. The old page override files were removed because they belonged to the superseded V1 system.
+
+Do not perform a colour-only patch of the V1 system. Derive the new system from V2.
+
 
 ## Accessibility and SEO
 
@@ -119,29 +127,27 @@ AEO: lead each information section with a direct answer, use question-based H2s,
 
 ## Working rules
 
-**Read the docs before major work.** Before any design, copy or build task, read:
-
+**Read the current docs before major work.** For design, copy or build tasks, read:
 - `docs/master-website-brief.md`
 - `docs/claims-and-compliance-rules.md`
-- `docs/design-inspiration.md`
-- `design.md`
-- `docs/hallmark-reference-validation.md`
-- `docs/skill-registry.md`
+- `docs/creative-direction-v2.md`
 
-**Source of truth vs. operational instructions.** `docs/master-website-brief.md` and `docs/claims-and-compliance-rules.md` are the source of truth for business facts, scope, content and claims. This CLAUDE.md provides operational instructions for how Claude should work in this repository — it does not override business facts.
+Read `docs/README.md` when the documentation structure is unclear. Read historical reference studies only when their research/provenance is specifically needed.
 
-**Conflict resolution.** If documents conflict, resolve in this order:
+**Source of truth vs implementation.** Business facts and claims come from the master brief and claims/compliance rules. Creative decisions come from Creative Direction V2 until a new design system is derived.
 
+**Conflict resolution.**
 1. Explicit founder decisions override older source material.
-2. The current master brief overrides earlier briefs.
+2. Current master brief overrides earlier briefs.
 3. Claims/compliance rules override design or implementation preferences.
-4. If a conflict does not resolve cleanly under 1–3, flag it to the user instead of silently choosing.
+4. Creative Direction V2 governs visual interpretation.
+5. If a conflict still cannot be resolved, flag it instead of silently choosing.
 
-**Small, reviewable commits.** One logical change per commit, with a clear message. No sweeping multi-page rewrites in a single commit; keep diffs readable by a non-developer reviewer.
+**Never copy the references.** References communicate quality and principles only. Do not reproduce layout, copy, photography, logos, exact colours, components, icons, motion, code, page hierarchy or financial claims.
 
-**Never copy the references.** The design references communicate quality and composition only. Do not reproduce any reference's layout, copy, photography, logos, exact colour values, components, icons, motion, code, page hierarchy or financial claims. Every build output must be original.
+**Ask before adding packages or changing architecture.** No new dependencies, frameworks, hosting/CMS choices, data models or structural refactors without confirmation.
 
-**Ask before adding packages or changing architecture.** No new dependencies, frameworks, hosting/CMS choices, data models or structural refactors without confirming first. Intended stack: Next.js, TypeScript, token-driven Tailwind (or equivalent), Git-based or headless content, server-side form route.
+**Small, reviewable commits.** One logical change per commit, with a clear message.
 
 ## Pre-launch placeholders (track, never silently resolve)
 
