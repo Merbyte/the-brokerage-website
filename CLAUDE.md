@@ -82,15 +82,26 @@ The estimated monthly repayment calculator is required for launch. The following
 
 ## Skill orchestration hierarchy
 
-Order of authority — higher entries always win:
+Verified against the installed toolchain. Order of authority — higher entries always win:
 
-1. `docs/master-website-brief.md` and the compliance/claims boundaries
-2. The project design system (`design-system/the-brokerage-advisory/`)
-3. UI UX Pro Max — responsive UX, components, accessibility
-4. Taste Skill — premium editorial art direction
-5. Frontend design skill — technical implementation
-6. Hallmark and Anti-Slop — audit/review gates
-7. Design Motion Principles — restrained motion, only after layout is stable
+1. **Master brief and claims/compliance rules** — `docs/master-website-brief.md`, `docs/claims-and-compliance-rules.md`
+2. **Project design system and `design.md`** — `design-system/the-brokerage-advisory/`
+3. **Hallmark** — reference study, originality review and launch audit
+4. **UI UX Pro Max** — design system, responsive UX and components
+5. **Frontend Design** — implementation
+6. **Super Design** — optional concept exploration only
+7. **Superpowers** — process and planning support only
+8. **Anti-Slop audit skills** — `antislop`, `antislop-ui`, `antislop-human`, `antislop-layoutmobile`, `antislop-copywriting`
+9. **ECC specialists** — accessibility, SEO and performance only
+10. **Native/CSS transitions only** for launch motion
+
+**Do not use ECC Taste.** `ecc:taste`, `ecc:taste-distillation` and `ecc:taste-application` are music-video and short-form-edit skills. They are not editorial art-direction skills and have no application to this project.
+
+**Do not use ECC motion skills, and do not add `motion/react` or any motion library, without founder approval.** Launch motion is native CSS transitions only. Adding a motion dependency is an architecture change and falls under the rule below on packages.
+
+**Hallmark must refuse Webflow-template demos and Dribbble shots as structural sources.** The RedSun Webflow demo and the Estatio Dribbble shot are **mood-only** references, as is the Pinterest board. None may supply layout, grid, component, interaction, typography, colour values or code. See `docs/hallmark-reference-validation.md` §1.
+
+**Responsive testing must include 320, 375, 414, 768, 1024 and 1440px.** 320px is the floor.
 
 Visual settings: design variance 5/10, motion intensity 3/10, visual density 4/10.
 
