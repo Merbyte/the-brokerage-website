@@ -1,11 +1,10 @@
 import { type ElementType, type ReactNode } from "react";
 
-type ContainerSize = "prose" | "content" | "wide";
+type ContainerSize = "prose" | "content";
 
 const MAX_WIDTH: Record<ContainerSize, string> = {
   prose: "max-w-[var(--container-prose)]",
   content: "max-w-[var(--container-content)]",
-  wide: "max-w-[var(--container-wide)]",
 };
 
 interface ContainerProps {
@@ -16,9 +15,10 @@ interface ContainerProps {
 }
 
 /**
- * Constrained inner container (MASTER.md §2.2). Full-width surface bands
- * always wrap their content in one of these; text never runs the full
- * viewport width.
+ * Constrained inner container (MASTER.md §4.1). Full-bleed surface bands run
+ * to the viewport edge; their content is always wrapped in one of these so
+ * it stays aligned to the 1200px grid. Gutters step 20 / 24 / 40px, which
+ * keeps 280px of readable width at the 320px floor.
  */
 export function Container({
   size = "content",
@@ -27,7 +27,9 @@ export function Container({
   children,
 }: ContainerProps) {
   return (
-    <Tag className={`mx-auto w-full px-4 md:px-6 lg:px-8 xl:px-10 ${MAX_WIDTH[size]} ${className}`}>
+    <Tag
+      className={`mx-auto w-full px-5 md:px-6 lg:px-10 ${MAX_WIDTH[size]} ${className}`}
+    >
       {children}
     </Tag>
   );

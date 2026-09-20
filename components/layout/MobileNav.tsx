@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
 import { Button } from "../ui/Button";
 import { CONTACT, PRIMARY_CTA_LABEL } from "@/lib/constants";
 import type { NavItem } from "./Header";
@@ -13,9 +14,10 @@ interface MobileNavProps {
 }
 
 /**
- * Full-screen mobile navigation panel (MASTER.md §5.2). Traps focus while
- * open, restores focus to the trigger on close, closes on Escape, and
- * locks body scroll. Panel transition is opacity/transform only.
+ * Full-screen mobile navigation (MASTER.md §6.1). Traps focus while open,
+ * restores focus to the trigger on close, closes on Escape and locks body
+ * scroll. The panel is obsidian like the bar it comes from, so opening the
+ * menu does not change the brand surface.
  */
 export function MobileNav({ id, open, onClose, navItems }: MobileNavProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -40,7 +42,7 @@ export function MobileNav({ id, open, onClose, navItems }: MobileNavProps) {
       if (event.key !== "Tab" || !panelRef.current) return;
 
       const focusable = panelRef.current.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
       );
       if (focusable.length === 0) return;
 
@@ -71,34 +73,34 @@ export function MobileNav({ id, open, onClose, navItems }: MobileNavProps) {
       ref={panelRef}
       role="dialog"
       aria-modal="true"
-      aria-label="Primary"
+      aria-label="Site navigation"
       hidden={!open}
-      className={`fixed inset-0 z-50 bg-surface-page flex flex-col transition-opacity duration-[var(--dur-base)] [transition-timing-function:var(--ease-standard)] ${
-        open ? "opacity-100" : "opacity-0"
-      }`}
+      data-surface="dark"
+      className="fixed inset-0 z-50 flex flex-col bg-obsidian-900"
     >
-      <div className="flex h-16 items-center justify-end px-4">
+      <div className="flex h-16 items-center justify-end px-5">
         <button
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          className="inline-flex h-12 w-12 items-center justify-center rounded-[var(--radius-control)] text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          className="inline-flex size-12 items-center justify-center text-text-primary"
         >
           <span className="sr-only">Close menu</span>
-          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
+          <span aria-hidden="true" className="relative block size-5">
+            <span className="absolute top-1/2 left-0 block h-px w-full rotate-45 bg-current" />
+            <span className="absolute top-1/2 left-0 block h-px w-full -rotate-45 bg-current" />
+          </span>
         </button>
       </div>
 
-      <nav aria-label="Primary" className="flex-1 overflow-y-auto px-6 pb-8">
-        <ul className="flex flex-col gap-1">
+      <nav aria-label="Primary" className="flex-1 overflow-y-auto px-5 pb-10">
+        <ul>
           {navItems.map((item) => (
-            <li key={item.href} className="border-b border-border-hairline">
+            <li key={item.href} className="border-t border-border-hairline">
               <a
                 href={item.href}
                 aria-current={item.current ? "page" : undefined}
-                className="block py-4 text-heading-s no-underline text-text-primary"
+                className="text-heading-sm flex min-h-14 items-center py-3 text-text-primary no-underline aria-[current=page]:text-text-accent"
               >
                 {item.label}
               </a>
@@ -106,22 +108,41 @@ export function MobileNav({ id, open, onClose, navItems }: MobileNavProps) {
           ))}
         </ul>
 
-        <div className="mt-6 flex flex-col gap-4">
-          <Button href="/get-a-free-financing-assessment/" variant="primary" fullWidthBelow414>
+        <div className="mt-10">
+          <Button
+            href="/get-a-free-financing-assessment/"
+            variant="primary"
+            fullWidthBelow414
+            className="max-[413px]:px-4! max-[374px]:text-[15px]!"
+          >
             {PRIMARY_CTA_LABEL}
           </Button>
-          <a href={CONTACT.phoneHref} className="text-body no-underline text-text-primary">
-            Call {CONTACT.phoneDisplay}
+        </div>
+
+        <div className="mt-8 flex flex-col gap-1 border-t border-border-hairline pt-6">
+          <a
+            href={CONTACT.phoneHref}
+            className="text-body font-figures inline-flex min-h-12 items-center text-text-primary no-underline"
+          >
+            {CONTACT.phoneDisplay}
           </a>
           <a
             href={CONTACT.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-body no-underline text-text-primary"
+            className="text-body inline-flex min-h-12 items-center text-text-primary no-underline"
           >
-            Message us on WhatsApp (opens in a new tab)
+            WhatsApp
           </a>
-          <p className="text-body-s text-text-secondary">{CONTACT.addressLine}</p>
+          <a
+            href={`mailto:${CONTACT.email}`}
+            className="text-body inline-flex min-h-12 items-center text-text-primary no-underline"
+          >
+            {CONTACT.email}
+          </a>
+          <p className="text-body-sm mt-2 text-text-secondary">
+            {CONTACT.addressLine}
+          </p>
         </div>
       </nav>
     </div>

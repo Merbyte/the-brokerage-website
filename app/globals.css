@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 /*
- * Design tokens sourced from design.md and
- * design-system/the-brokerage-advisory/MASTER.md.
- * Do not add or change token values here without updating those documents.
+ * Design tokens: design.md §3-§6 and
+ * design-system/the-brokerage-advisory/MASTER.md §2-§4 (V2, Black & Gold).
+ * Values are founder-approved. Do not change them here without an approved
+ * documentation change first.
  */
 
 :root {
-  /* Primitives (design.md §2) */
-  --navy-900: #0b172a;
-  --navy-800: #111827;
-  --navy-700: #1b2740;
+  /* Primitives (design.md §3) */
+  --obsidian-900: #0b0b0b;
+  --obsidian-800: #111111;
+  --charcoal-700: #242424;
   --ink-900: #172033;
   --ink-600: #4a566b;
   --ink-400: #7c8798;
@@ -21,6 +22,7 @@
   --gold-500: #c9a227;
   --gold-300: #e0c76a;
   --gold-ink-700: #7a6414;
+  --ink-on-dark-secondary: #c8c5c0;
   --red-700: #a32b22;
   --red-300: #e8a49e;
   --green-700: #1f6b4a;
@@ -29,9 +31,8 @@
   --amber-300: #e8c77a;
   --blue-700: #1f4e79;
   --blue-300: #9bc2e3;
-  --ink-on-dark-secondary: #c3cbd9;
 
-  /* Semantic tokens, light context (MASTER.md §3.2) */
+  /* Semantic tokens, light context (design.md §3 / MASTER.md §2.2) */
   --text-primary: var(--ink-900);
   --text-secondary: var(--ink-600);
   --text-disabled: var(--ink-400);
@@ -42,145 +43,130 @@
   --border-hairline: var(--stone-200);
   --border-strong: var(--ink-600);
   --accent: var(--gold-500);
-  --accent-on: var(--ink-900);
-  --focus-ring: var(--navy-900);
+  --accent-on: var(--obsidian-900);
+  --focus-ring: var(--obsidian-900);
   --state-error: var(--red-700);
   --state-success: var(--green-700);
   --state-warning: var(--amber-800);
   --state-info: var(--blue-700);
 
-  /* Motion tokens (design.md §6) */
+  /*
+   * Diagram strokes (MASTER.md §7.2). A drawn hairline has to sit darker
+   * than a divider and lighter than body text, so both weights are mixed
+   * from surface tokens rather than adding colours outside the palette.
+   */
+  --diagram-line: color-mix(in srgb, var(--ink-600) 38%, var(--surface-page));
+  --diagram-line-strong: var(--ink-900);
+  --diagram-fill: color-mix(in srgb, var(--ink-600) 8%, var(--surface-page));
+
+  /* Motion (MASTER.md §11) */
   --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
   --ease-enter: cubic-bezier(0, 0, 0.2, 1);
   --ease-exit: cubic-bezier(0.4, 0, 1, 1);
-  --dur-fast: 120ms;
+  --dur-fast: 150ms;
   --dur-base: 180ms;
-  --dur-slow: 240ms;
+  --dur-slow: 220ms;
 
-  /*
-   * Radius (founder-approved). 6px applies only to interactive controls --
-   * buttons, form fields, disclaimer/alert blocks and their focus rings.
-   * Route-comparison structures, typographic indexes and section bands
-   * stay square/near-square; do not introduce large rounded cards.
-   */
+  /* Radius: interactive controls only. Plates and bands stay square. */
   --radius-control: 6px;
 
-  /* Containers (design.md §4 / MASTER.md §2.2) */
-  --container-prose: 45rem; /* 720px */
-  --container-content: 75rem; /* 1200px */
-  --container-wide: 75rem; /* 1200px */
+  /* Containers (MASTER.md §4.1) */
+  --container-prose: 45rem;
+  --container-content: 75rem;
 
-  /* Typography scale, mobile values (MASTER.md §4.2) */
-  --fs-display-xl: 40px;
-  --lh-display-xl: 1.05;
-  --fs-display-l: 32px;
-  --lh-display-l: 1.1;
-  --fs-heading-l: 26px;
-  --lh-heading-l: 1.2;
-  --fs-heading-m: 21px;
-  --lh-heading-m: 1.25;
-  --fs-heading-s: 18px;
-  --lh-heading-s: 1.3;
-  --fs-body-l: 18px;
-  --lh-body-l: 1.55;
+  /* Type scale, mobile column (design.md §4) */
+  --fs-display-hero: 44px;
+  --lh-display-hero: 1.06;
+  --fs-display-section: 34px;
+  --lh-display-section: 1.08;
+  --fs-heading-lg: 28px;
+  --lh-heading-lg: 1.18;
+  --fs-heading-md: 22px;
+  --lh-heading-md: 1.24;
+  --fs-heading-sm: 18px;
+  --lh-heading-sm: 1.3;
+  --fs-body-lg: 19px;
+  --lh-body-lg: 1.58;
   --fs-body: 17px;
-  --lh-body: 1.6;
-  --fs-body-s: 16px;
-  --lh-body-s: 1.5;
-  --fs-label: 15px;
+  --lh-body: 1.62;
+  --fs-body-sm: 16px;
+  --lh-body-sm: 1.5;
+  --fs-label: 14px;
   --lh-label: 1.3;
   --fs-disclaimer: 17px;
   --lh-disclaimer: 1.6;
-  --fs-legal: 16px;
-  --lh-legal: 1.55;
-  --fs-table-cell: 16px;
-  --lh-table-cell: 1.45;
-  --fs-table-header: 15px;
-  --lh-table-header: 1.3;
-  --fs-form-label: 16px;
-  --lh-form-label: 1.4;
-  --fs-form-input: 17px;
-  --lh-form-input: 1.45;
 }
 
-/* Desktop typography overrides (MASTER.md §4.2, "Desktop" column) */
+/*
+ * 768px carries intermediate display sizes so the step from the 44px mobile
+ * hero to the 72px desktop hero is not taken in one jump on tablets. Body
+ * sizes are unchanged here.
+ */
+@media (min-width: 768px) {
+  :root {
+    --fs-display-hero: 56px;
+    --fs-display-section: 42px;
+    --fs-heading-lg: 32px;
+    --fs-heading-md: 24px;
+    --fs-heading-sm: 20px;
+    --fs-body-lg: 20px;
+  }
+}
+
+/* 1024px is the desktop column of the design.md §4 scale. */
 @media (min-width: 1024px) {
   :root {
-    --fs-display-xl: 64px;
-    --fs-display-l: 48px;
-    --fs-heading-l: 34px;
-    --fs-heading-m: 26px;
-    --fs-heading-s: 20px;
-    --fs-body-l: 20px;
+    --fs-display-hero: 72px;
+    --lh-display-hero: 1.02;
+    --fs-display-section: 54px;
+    --lh-display-section: 1.04;
+    --fs-heading-lg: 36px;
+    --fs-heading-md: 28px;
+    --fs-heading-sm: 21px;
+    --fs-body-lg: 21px;
     --fs-body: 18px;
     --fs-disclaimer: 18px;
-    /* body-s, label, legal, table-cell, table-header, form-label and
-       form-input are identical at mobile and desktop per MASTER.md §4.2 */
   }
 }
 
 /*
- * Dark-surface scope (MASTER.md §3.2 "Dark context" column, §3.4, §5.14).
- * Wrap a section with data-surface="dark" to switch every token it contains
- * to the dark-context value. Components must never hardcode dark colours.
+ * Dark scope (MASTER.md §2.2). Anything carrying data-surface="dark"
+ * switches every semantic token beneath it to its dark-context value, so no
+ * component hardcodes a dark colour.
  */
 [data-surface="dark"] {
   --text-primary: var(--white);
   --text-secondary: var(--ink-on-dark-secondary);
-  --text-disabled: var(--navy-700);
+  --text-disabled: var(--charcoal-700);
   --text-accent: var(--gold-300);
-  --surface-page: var(--navy-900);
-  --surface-raised: var(--navy-800);
-  --surface-secondary: var(--navy-800);
-  --border-hairline: var(--navy-700);
+  --surface-page: var(--obsidian-900);
+  --surface-raised: var(--obsidian-800);
+  --surface-secondary: var(--obsidian-800);
+  --border-hairline: var(--charcoal-700);
   --border-strong: var(--ink-on-dark-secondary);
   --focus-ring: var(--gold-300);
   --state-error: var(--red-300);
   --state-success: var(--green-300);
   --state-warning: var(--amber-300);
   --state-info: var(--blue-300);
-  /* --accent and --accent-on are identical in both contexts (MASTER.md §3.2) */
-}
-
-/*
- * Desktop-only dark scope. The homepage hero is dark from 1024px up and
- * light below it, because the mobile hero must stay on the light surface
- * (design.md §5, MASTER.md §3.4 -- dark is the worst case for outdoor
- * phone legibility, and this audience arrives outdoors). Values are
- * identical to [data-surface="dark"] above, which remains their source of
- * truth; they are repeated because CSS cannot media-gate one arm of a
- * selector list.
- */
-@media (min-width: 1024px) {
-  [data-surface-desktop="dark"] {
-    --text-primary: var(--white);
-    --text-secondary: var(--ink-on-dark-secondary);
-    --text-disabled: var(--navy-700);
-    --text-accent: var(--gold-300);
-    --surface-page: var(--navy-900);
-    --surface-raised: var(--navy-800);
-    --surface-secondary: var(--navy-800);
-    --border-hairline: var(--navy-700);
-    --border-strong: var(--ink-on-dark-secondary);
-    --focus-ring: var(--gold-300);
-    --state-error: var(--red-300);
-    --state-success: var(--green-300);
-    --state-warning: var(--amber-300);
-    --state-info: var(--blue-300);
-  }
+  --diagram-line: color-mix(in srgb, var(--ink-on-dark-secondary) 42%, var(--obsidian-900));
+  --diagram-line-strong: var(--ink-on-dark-secondary);
+  --diagram-fill: color-mix(in srgb, var(--ink-on-dark-secondary) 9%, var(--obsidian-900));
 }
 
 @theme inline {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-source-serif);
 
-  --color-navy-900: var(--navy-900);
-  --color-navy-800: var(--navy-800);
+  --color-obsidian-900: var(--obsidian-900);
+  --color-obsidian-800: var(--obsidian-800);
+  --color-charcoal-700: var(--charcoal-700);
   --color-ivory-50: var(--ivory-50);
   --color-stone-100: var(--stone-100);
   --color-stone-200: var(--stone-200);
+  --color-white: var(--white);
   --color-gold-500: var(--gold-500);
   --color-gold-300: var(--gold-300);
-  --color-white: var(--white);
 
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
@@ -198,45 +184,14 @@
   --color-state-success: var(--state-success);
   --color-state-warning: var(--state-warning);
   --color-state-info: var(--state-info);
+  --color-diagram-line: var(--diagram-line);
+  --color-diagram-line-strong: var(--diagram-line-strong);
+  --color-diagram-fill: var(--diagram-fill);
 }
 
 /*
- * Tailwind's default spacing scale (0.25rem per step) already produces the
- * approved 4pt scale in design.md §4 -- 4, 8, 12, 16, 20, 24, 32, 40, 48,
- * 64, 80, 96, 128 -- at steps 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32.
- * No spacing override is required.
- */
-
-/*
- * Motion (founder-approved). Native CSS transitions may animate opacity,
- * transform, background-color, border-color and color only. Do not animate
- * dimensions, layout properties, box-shadow, filters, blur, card scale,
- * scrolling or counters. Focus rings (see :focus-visible below) are instant
- * and must never animate. The @media (prefers-reduced-motion: reduce) block
- * further caps everything to a 150ms opacity-only transition.
- */
-
-/*
- * Gold (founder-approved, provisional). --gold-500/--gold-300 are the
- * current contrast-tested accent values -- do not change them here without
- * an approved documentation update. Gold is never used as text color on
- * light surfaces (see --text-accent, light context, which uses
- * --gold-ink-700, not gold, for that reason); it is only used as text
- * color in the dark context and as the --accent surface/border color.
- */
-
-/*
- * Desktop hero (not yet decided). No homepage hero exists yet. The
- * dark-surface scoping mechanism above supports both a light and a dark
- * hero variant without any component changes -- wrap the hero section in
- * data-surface="dark" for the dark variant, or omit it for light. Whichever
- * is chosen for desktop, the mobile hero must render in the light variant.
- */
-
-/*
- * Breakpoints (founder-approved). Container gutters approximate the
- * design.md §4 1440px gutter step using Tailwind's xl: (1280px) breakpoint;
- * no custom 1440px breakpoint has been added yet.
+ * The default 0.25rem spacing step already produces the approved 4pt scale
+ * (design.md §5) at steps 1-32, so no spacing override is required.
  */
 
 @layer base {
@@ -244,10 +199,14 @@
     border-color: var(--border-hairline);
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     background: var(--surface-page);
     color: var(--text-primary);
-    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
       "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: var(--fs-body);
     line-height: var(--lh-body);
@@ -257,40 +216,13 @@
   h1,
   h2,
   h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  h1 {
-    font-size: var(--fs-display-xl);
-    line-height: var(--lh-display-xl);
-    letter-spacing: -0.02em;
-    overflow-wrap: anywhere;
-  }
-
-  h2 {
-    font-size: var(--fs-heading-l);
-    line-height: var(--lh-heading-l);
-    letter-spacing: -0.01em;
-  }
-
-  h3 {
-    font-size: var(--fs-heading-m);
-    line-height: var(--lh-heading-m);
-    letter-spacing: -0.005em;
-  }
-
   h4 {
-    font-size: var(--fs-heading-s);
-    line-height: var(--lh-heading-s);
+    color: var(--text-primary);
+    font-weight: 600;
   }
 
   p,
-  ul,
-  ol {
+  li {
     font-size: var(--fs-body);
     line-height: var(--lh-body);
   }
@@ -305,8 +237,6 @@
   }
 
   table {
-    font-size: var(--fs-table-cell);
-    line-height: var(--lh-table-cell);
     border-collapse: collapse;
     width: 100%;
   }
@@ -316,71 +246,68 @@
     text-align: left;
   }
 
-  /* Column headers are labels and are set as such. Row headers are names
-     -- a financing route read in capitals looks like a category tag. */
-  thead th {
-    font-size: var(--fs-table-header);
-    line-height: var(--lh-table-header);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  small {
-    font-size: var(--fs-legal);
-    line-height: var(--lh-legal);
-  }
-
   :focus {
     outline: none;
   }
 
   :focus-visible {
     outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
+    outline-offset: 3px;
     transition: none;
   }
 }
 
 @layer utilities {
-  .text-display-xl {
-    font-size: var(--fs-display-xl);
-    line-height: var(--lh-display-xl);
-    letter-spacing: -0.02em;
+  /*
+   * Editorial voice (design.md §4). Source Serif 4 is used only for major
+   * headings on obsidian surfaces: the hero, the advisory argument and the
+   * closing invitation. Every explanatory surface stays in Manrope. Serif is
+   * never gold, never italic display and never used for interface text.
+   */
+  .font-editorial {
+    font-family: var(--font-source-serif), ui-serif, Georgia, "Times New Roman",
+      serif;
     font-weight: 600;
-    overflow-wrap: anywhere;
+    letter-spacing: -0.015em;
   }
 
-  .text-display-l {
-    font-size: var(--fs-display-l);
-    line-height: var(--lh-display-l);
+  .text-display-hero {
+    font-size: var(--fs-display-hero);
+    line-height: var(--lh-display-hero);
+    overflow-wrap: break-word;
+  }
+
+  .text-display-section {
+    font-size: var(--fs-display-section);
+    line-height: var(--lh-display-section);
     letter-spacing: -0.015em;
     font-weight: 600;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 
-  .text-heading-l {
-    font-size: var(--fs-heading-l);
-    line-height: var(--lh-heading-l);
-    letter-spacing: -0.01em;
+  .text-heading-lg {
+    font-size: var(--fs-heading-lg);
+    line-height: var(--lh-heading-lg);
+    letter-spacing: -0.012em;
     font-weight: 600;
   }
 
-  .text-heading-m {
-    font-size: var(--fs-heading-m);
-    line-height: var(--lh-heading-m);
-    letter-spacing: -0.005em;
+  .text-heading-md {
+    font-size: var(--fs-heading-md);
+    line-height: var(--lh-heading-md);
+    letter-spacing: -0.008em;
     font-weight: 600;
   }
 
-  .text-heading-s {
-    font-size: var(--fs-heading-s);
-    line-height: var(--lh-heading-s);
+  .text-heading-sm {
+    font-size: var(--fs-heading-sm);
+    line-height: var(--lh-heading-sm);
     font-weight: 600;
   }
 
-  .text-body-l {
-    font-size: var(--fs-body-l);
-    line-height: var(--lh-body-l);
+  .text-body-lg {
+    font-size: var(--fs-body-lg);
+    line-height: var(--lh-body-lg);
   }
 
   .text-body {
@@ -388,17 +315,27 @@
     line-height: var(--lh-body);
   }
 
-  .text-body-s {
-    font-size: var(--fs-body-s);
-    line-height: var(--lh-body-s);
+  .text-body-sm {
+    font-size: var(--fs-body-sm);
+    line-height: var(--lh-body-sm);
   }
 
+  /*
+   * Functional data labels only: table columns, diagram keys and the mobile
+   * comparison stack. Never an eyebrow above a section heading.
+   */
   .text-label {
     font-size: var(--fs-label);
     line-height: var(--lh-label);
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 600;
+  }
+
+  .text-meta {
+    font-size: var(--fs-label);
+    line-height: 1.45;
+    font-weight: 500;
   }
 
   .text-disclaimer {
@@ -406,24 +343,17 @@
     line-height: var(--lh-disclaimer);
   }
 
-  .text-legal {
-    font-size: var(--fs-legal);
-    line-height: var(--lh-legal);
-  }
-
-  .text-form-label {
-    font-size: var(--fs-form-label);
-    line-height: var(--lh-form-label);
-    font-weight: 500;
-  }
-
-  .text-form-input {
-    font-size: var(--fs-form-input);
-    line-height: var(--lh-form-input);
-  }
-
   .font-figures {
     font-variant-numeric: tabular-nums slashed-zero;
+  }
+
+  /* Reading measures (MASTER.md §4.1) */
+  .measure {
+    max-width: 38rem;
+  }
+
+  .measure-wide {
+    max-width: 47.5rem;
   }
 }
 
@@ -433,8 +363,7 @@
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 150ms !important;
-    transition-property: opacity !important;
+    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }

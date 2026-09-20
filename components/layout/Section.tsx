@@ -1,50 +1,65 @@
 import { type ReactNode } from "react";
+
 import { Container } from "./Container";
 
-type Surface = "page" | "secondary" | "dark" | "dark-alt";
-type ContainerSize = "prose" | "content" | "wide";
+/**
+ * Surface roles (MASTER.md §5.1):
+ *   obsidian  -- chapters that need gravity: hero, argument, close
+ *   ivory     -- the default reading ground
+ *   stone     -- diagram and utility plates, and variation between two
+ *                consecutive reading sections
+ */
+type Surface = "obsidian" | "ivory" | "stone";
+
+type Rhythm = "default" | "tall" | "quiet";
 
 const SURFACE_CLASS: Record<Surface, string> = {
-  page: "bg-surface-page",
-  secondary: "bg-surface-secondary",
-  dark: "bg-surface-page",
-  "dark-alt": "bg-surface-secondary",
+  obsidian: "bg-obsidian-900",
+  ivory: "bg-ivory-50",
+  stone: "bg-stone-100",
+};
+
+/* MASTER.md §4.4: 56-72 mobile, 72-88 tablet, 96-128 desktop. */
+const RHYTHM_CLASS: Record<Rhythm, string> = {
+  default: "py-16 md:py-20 lg:py-28",
+  tall: "py-20 md:py-24 lg:py-32",
+  quiet: "py-14 md:py-16 lg:py-24",
 };
 
 interface SectionProps {
-  surface?: Surface;
-  containerSize?: ContainerSize;
-  className?: string;
+  surface: Surface;
+  rhythm?: Rhythm;
   id?: string;
-  "aria-label"?: string;
-  as?: "section" | "div" | "footer";
+  className?: string;
+  /** Set false when the section owns its own full-bleed inner composition. */
+  contained?: boolean;
+  "aria-labelledby"?: string;
   children: ReactNode;
 }
 
 /**
- * Full-width surface band with a constrained inner container. Dark bands
- * set data-surface="dark" so every semantic token nested inside switches
- * to its dark-context value (globals.css, MASTER.md §3.2/§3.4).
+ * Full-bleed surface band. Obsidian bands set data-surface="dark" so every
+ * semantic token beneath them resolves to its dark-context value
+ * (globals.css, MASTER.md §2.2) -- no component carries a dark colour of
+ * its own.
  */
 export function Section({
-  surface = "page",
-  containerSize = "content",
-  className = "",
+  surface,
+  rhythm = "default",
   id,
-  as: Tag = "section",
+  className = "",
+  contained = true,
   children,
   ...rest
 }: SectionProps) {
-  const isDark = surface === "dark" || surface === "dark-alt";
-
   return (
-    <Tag
+    <section
       id={id}
-      data-surface={isDark ? "dark" : undefined}
-      className={`py-12 md:py-[72px] lg:py-24 ${SURFACE_CLASS[surface]} ${className}`}
+      data-surface={surface === "obsidian" ? "dark" : undefined}
+      className={`${SURFACE_CLASS[surface]} ${RHYTHM_CLASS[rhythm]} ${className}`}
       {...rest}
     >
-      <Container size={containerSize}>{children}</Container>
-    </Tag>
+      {contained ? <Container>{children}</Container> : children}
+    </section>
   );
 }
