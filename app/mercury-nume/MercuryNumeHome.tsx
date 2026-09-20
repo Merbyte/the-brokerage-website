@@ -18,6 +18,10 @@ const routes = [
   ["Performance Bonds", "A bond requirement before project work can begin.", "/performance-bonds/"],
 ];
 
+function Brand() {
+  return <a href="/" className={styles.brand}><span>THE BROKERAGE</span><small>ADVISORY</small></a>;
+}
+
 const faqs = [
   ["What does a financing advisory do?", "We help a business understand its financing situation before deciding where and how to approach banks, financiers or capital providers."],
   ["Is The Brokerage Advisory a bank or lender?", "No. The Brokerage Advisory is an independent financing advisory. It does not lend."],
