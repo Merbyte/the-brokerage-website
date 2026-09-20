@@ -1,6 +1,6 @@
-import { routes, situations, steps } from "../concept-data";
-import { Cta, ConceptFooter, LightHeader, MobileHeader } from "../ConceptHeader";
-import styles from "../concepts.module.css";
+import { routes, situations, steps } from "./concept-data";
+import { Cta, ConceptFooter, LightHeader, MobileHeader } from "./ConceptHeader";
+import styles from "./concepts.module.css";
 
 export default function WorksConcept(){
  return <div className={styles.works}>
