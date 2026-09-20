@@ -1,0 +1,24 @@
+import { routes, situations, steps } from "../concept-data";
+import { Cta, LightHeader, MobileHeader } from "../ConceptHeader";
+import styles from "../concepts.module.css";
+
+export default function WorksConcept(){
+ return <div className={styles.works}>
+  <LightHeader variant="works"/><MobileHeader/>
+  <main>
+   <section className={styles.woHero}><div className={styles.woHeroCopy}><div className={styles.overline}>Independent financing advisory · Singapore</div><h1>Understand the financing problem <i>before you solve it.</i></h1><p>Diagnose the situation, structure the possible routes and decide how to approach banks, financiers or capital providers.</p><Cta/></div><div className={styles.woInstrument}><div className={styles.woInstrumentHead}><span>LIVE MODEL / PROJECT 01</span><span>CASH FLOW</span></div><svg viewBox="0 0 620 380" aria-label="Illustrative cash-flow model"><path d="M20 310 H600" className={styles.graphBase}/><path d="M20 230 C120 250 140 110 270 170 S420 250 600 85" className={styles.graphOne}/><path d="M20 160 C120 120 200 240 300 215 S450 130 600 190" className={styles.graphTwo}/><path d="M360 45 V325" className={styles.graphCursor}/><circle cx="360" cy="205" r="8" className={styles.graphDot}/><rect x="255" y="242" width="180" height="42" className={styles.graphWindow}/></svg><div className={styles.woGraphLabels}><span>COMMIT</span><span>CLAIM</span><span>RECEIVE</span></div><small>Outgoing commitments can arrive before receipts.</small></div></section>
+
+   <section id="situations" className={styles.woSignals}><div className={styles.woSignalLead}><div className={styles.overline}>01 / Diagnostic</div><h2>Four signals that the <i>route needs context.</i></h2><p>Selecting a financing product is downstream of understanding the situation.</p></div><div className={styles.woSignalPanel}>{situations.map(([n,t,b])=><details key={n}><summary><span>{n}</span><strong>{t}</strong><b>+</b></summary><p>{b}</p></details>)}</div></section>
+
+   <section id="method" className={styles.woSystem}><div className={styles.woSystemLead}><div className={styles.overline}>02 / Advisory system</div><h2>One system.<br/><i>Four decisions.</i></h2><p>Every conversation moves through the same logic.</p></div><div className={styles.woOrbit}><div className={styles.orbitLine}/>{steps.map(([n,t,b],i)=><article style={{"--step":i} as React.CSSProperties} key={n}><small>{n}</small><h3>{t}</h3><p>{b}</p></article>)}</div></section>
+
+   <section id="construction" className={styles.woCash}><div className={styles.woCashCopy}><div className={styles.overline}>03 / Works · Construction & Engineering</div><h2>Construction financing is a <i>timing system.</i></h2><p>Mobilisation, procurement, progress claims, certification and payment happen at different moments.</p><a href="/construction-engineering-financing/">Discuss your project ↗</a></div><div className={styles.woCashGraphic}><div className={styles.woCashAxis}/><div className={styles.woExposureWindow}><span>COMMITTED</span><b>EXPOSURE WINDOW</b><span>RECEIVED</span></div>{["Mobilisation","Procurement","Progress claim","Certification","Payment"].map((x,i)=><div key={x} className={i===2?styles.woCashHot:styles.woCashPoint} style={{top:(18+i*15)+"%"}}><small>0{i+1}</small><strong>{x}</strong></div>)}</div></section>
+
+   <section id="routes" className={styles.woRoutes}><div className={styles.woRoutesTop}><div><div className={styles.overline}>04 / Pathways</div><h2>Choose by <i>context,</i> not by label.</h2></div><p>Five route families remain visible. Explore the one that sounds closest to your situation.</p></div><div className={styles.woRouteGrid}>{routes.map(([t,b,h],i)=><a href={h} key={t}><small>0{i+1}</small><h3>{t}</h3><p>{b}</p><span>OPEN ↗</span></a>)}</div></section>
+
+   <section id="comparison" className={styles.woCompare}><div className={styles.woCompareTop}><div><div className={styles.overline}>05 / Advisory instrument</div><h2>Five things to <i>understand first.</i></h2></div><div className={styles.metricRail}>{["Purpose","Cash flow","Facilities","Information","Timing"].map((x,i)=><span key={x}><b>0{i+1}</b>{x}</span>)}</div></div><div className={styles.woMatrix}>{routes.slice(0,4).map(([t,b],i)=><article key={t}><small>0{i+1}</small><h3>{t}</h3><strong>{b}</strong><p>Assess the business profile, cash flow, existing obligations and supporting information.</p><a href="/get-a-free-financing-assessment/">Discuss ↗</a></article>)}</div></section>
+
+   <section id="start" className={styles.woClose}><div className={styles.woCloseGraphic}><span>+</span></div><div className={styles.overline}>06 / Start with the situation</div><h2>Have a financing situation that is <i>not straightforward?</i></h2><p>Start with a free initial assessment.</p><Cta/></section>
+  </main>
+ </div>;
+}
