@@ -1,5 +1,5 @@
 import { routes, situations, steps } from "../concept-data";
-import { Cta, DarkHeader, MobileHeader } from "../ConceptHeader";
+import { Cta, ConceptFooter, DarkHeader, MobileHeader } from "../ConceptHeader";
 import styles from "../concepts.module.css";
 
 export default function ChamberConcept(){
@@ -46,5 +46,6 @@ export default function ChamberConcept(){
 
    <section id="start" className={styles.chClose}><div className={styles.chCloseOrb}/><div className={styles.overline}>07 / Start with the situation</div><h2>Have a financing situation that is <i>not straightforward?</i></h2><p>Start with a free initial assessment.</p><Cta/></section>
   </main>
+  <ConceptFooter dark/>
  </div>;
 }
