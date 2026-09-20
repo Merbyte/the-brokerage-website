@@ -1,6 +1,6 @@
-import { routes, situations, steps, faq } from "../concept-data";
-import { Cta, ConceptFooter, LightHeader, MobileHeader } from "../ConceptHeader";
-import styles from "../concepts.module.css";
+import { routes, situations, steps, faq } from "./concept-data";
+import { Cta, ConceptFooter, LightHeader, MobileHeader } from "./ConceptHeader";
+import styles from "./concepts.module.css";
 
 export default function EditorialConcept(){
  return <div className={styles.editorial}>
