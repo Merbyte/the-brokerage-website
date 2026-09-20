@@ -242,7 +242,7 @@ Do not use:
    - `docs/master-website-brief.md`
    - `docs/claims-and-compliance-rules.md`
    - This file
-2. Run Hallmark in study mode.
+2. Run Hallmark in study mode only where the source qualifies. Pinterest, Webflow template demos and Dribbble shots are mood-only references, not structural sources.
 3. Create `docs/design-reference-study.md`.
 4. Extract design DNA without copying.
 
@@ -250,13 +250,13 @@ Do not use:
 
 Use:
 - UI UX Pro Max for component system, accessibility and responsive UX
-- Taste Skill for premium editorial interpretation
+- Use Hallmark for reference study and originality constraints, UI UX Pro Max for the project design system, and the approved project design system as the visual source of truth. Super Design may be used only for optional concept exploration.
 - Frontend Design skill for implementation
-- Design Motion Principles only after the layout is stable
+- Use native CSS transitions only for launch motion. Motion intensity is 2/10. Animate opacity and transform only. Do not use a motion library without explicit founder approval. Never animate focus rings. Respect prefers-reduced-motion.
 
 Recommended visual settings:
 - Design variance: 5/10
-- Motion intensity: 3/10
+- Motion intensity: 2/10
 - Visual density: 4/10
 
 ## Before launch

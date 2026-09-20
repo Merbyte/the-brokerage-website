@@ -145,7 +145,6 @@ Track as `whatsapp_click`. Do not make WhatsApp the only conversion route.
 - Project & Private Capital
 - Construction & Engineering
 - How It Works
-- Insights
 - About
 - **Get a Free Financing Assessment**
 
@@ -162,7 +161,6 @@ Track as `whatsapp_click`. Do not make WhatsApp the only conversion route.
 | Construction & Engineering | `/construction-engineering-financing/` | Priority ICP pathway | Discuss Your Project |
 | How It Works | `/how-it-works/` | Diagnose-first process | Get a Free Financing Assessment |
 | About | `/about/` | Philosophy, independent model, credibility | Contact Us |
-| Insights | `/insights/` | Resource hub | Explore an Article |
 | FAQ | `/faq/` | Answer objections and queries | Get a Free Financing Assessment |
 | Calculator | `/tools/monthly-repayment-calculator/` | Illustrative repayment estimate | Get a Free Financing Assessment |
 | Assessment | `/get-a-free-financing-assessment/` | Simple enquiry form | Submit Enquiry |
@@ -171,6 +169,10 @@ Track as `whatsapp_click`. Do not make WhatsApp the only conversion route.
 | Privacy | `/privacy-policy/` | Placeholder until reviewed | None |
 | Terms | `/terms-and-conditions/` | Placeholder until reviewed | None |
 | Disclaimer | `/disclaimer/` | Placeholder until final approved wording | None |
+
+## Post-launch phase
+
+**Insights (`/insights/`) is not in launch scope.** It is deferred to a post-launch content phase and is excluded from the launch primary navigation and launch sitemap until at least three approved articles exist. The CMS/content structure (article schema, category taxonomy, URL pattern, reviewed-date field) may be built in advance, but no thin or empty public Insights page ships at launch. Once the three-article threshold is met, add Insights back to primary navigation and the sitemap in a dedicated, reviewable change.
 
 ---
 
@@ -196,14 +198,11 @@ Track as `whatsapp_click`. Do not make WhatsApp the only conversion route.
 
 **Visual direction:** editorial image or refined abstract structured-finance visual; priority imagery includes Singapore commercial/project settings, construction/engineering environments and real advisory context. Avoid generic handshakes, stock call-centre scenes, fake dashboards and lender logos.
 
-## Section 3 — Trust strip
+## Section 3 — Hero trust line
 
-Use approved qualitative proof only:
+**Not a standalone trust-strip section or band.** A single compact line, part of the hero itself, directly beneath the hero CTAs. Use approved qualitative proof only, condensed to one line, for example:
 
-- Independent, diagnosis-first advisory.
-- Banks and financiers in our local and overseas network.
-- Built for complex and non-standard situations.
-- Clear communication before formal submission.
+> Independent, diagnosis-first advisory. Banks and financiers in our local and overseas network.
 
 ## Section 4 — Problems we help assess
 
@@ -233,7 +232,7 @@ Include language that this process does not guarantee financing.
 
 ## Section 6 — Financing pathways
 
-Cards:
+**Typographic route index, not cards.** A single-column list separated by hairline rules — no enclosed card containers, borders-as-boxes or grid of tiles.
 
 - Business Financing
 - Trade Financing
@@ -241,7 +240,7 @@ Cards:
 - Project & Private Capital
 - Performance Bonds
 
-Each has: one-sentence situation, appropriate-use example, “Explore” link.
+Each entry has: route name as heading, one-sentence situation, appropriate-use example, “Explore” link.
 
 ## Section 7 — Construction and engineering pathway
 
@@ -365,6 +364,8 @@ Include company philosophy, independent model, process, network wording and inte
 
 **H1:** Estimated Monthly Repayment Calculator  
 Purpose: planning aid, not offer/quote/approval.
+
+**The estimated monthly repayment calculator stays in launch scope, but it cannot be implemented until the following are approved: the calculation method (simple interest vs. reducing-balance amortisation), the illustrative rate used, documented worked test cases, an assigned content owner and a review date.** Until then this remains a specified, unbuilt launch requirement — not a placeholder to route around and not a feature to drop from scope.
 
 Required inputs:
 

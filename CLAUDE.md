@@ -103,7 +103,7 @@ Verified against the installed toolchain. Order of authority — higher entries 
 
 **Responsive testing must include 320, 375, 414, 768, 1024 and 1440px.** 320px is the floor.
 
-Visual settings: design variance 5/10, motion intensity 3/10, visual density 4/10.
+Visual settings: design variance 5/10, motion intensity 2/10, visual density 4/10.
 
 Guardrails: no skill may override verified business facts, introduce financial claims, data, testimonials or trust logos not approved in the brief, or replace the calculator disclaimer.
 
@@ -124,6 +124,9 @@ AEO: lead each information section with a direct answer, use question-based H2s,
 - `docs/master-website-brief.md`
 - `docs/claims-and-compliance-rules.md`
 - `docs/design-inspiration.md`
+- `design.md`
+- `docs/hallmark-reference-validation.md`
+- `docs/skill-registry.md`
 
 **Source of truth vs. operational instructions.** `docs/master-website-brief.md` and `docs/claims-and-compliance-rules.md` are the source of truth for business facts, scope, content and claims. This CLAUDE.md provides operational instructions for how Claude should work in this repository — it does not override business facts.
 
