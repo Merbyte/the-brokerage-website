@@ -31,3 +31,11 @@ export function MobileHeader({dark=false}:{dark?:boolean}) {
 export function Cta({children="Get a Free Financing Assessment"}:{children?:string}) {
   return <a className={styles.primaryCta} href="/get-a-free-financing-assessment/">{children} <span>↗</span></a>;
 }
+
+export function ConceptFooter({dark=false}:{dark?:boolean}) {
+  return <footer className={styles.conceptFooter + (dark ? " " + styles.conceptFooterDark : "")}>
+    <div><ConceptBrand/><p>An independent Singapore financing advisory. Diagnose the situation first, then decide the route.</p></div>
+    <nav><a href="/about/">About</a><a href="/how-it-works/">How it works</a><a href="/faq/">FAQ</a><a href="/contact/">Contact</a></nav>
+    <div className={styles.footerContact}><a href="tel:+6580118194">+65 8011 8194</a><a href="mailto:admin@thebrokerage-advisory.com">admin@thebrokerage-advisory.com</a><span>31A Lowland Road, Singapore 547424</span></div>
+  </footer>;
+}
