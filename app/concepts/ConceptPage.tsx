@@ -162,7 +162,7 @@ function Works() {
 
       <section className={styles.woSystem} id="method">
         <div className={styles.woSystemLead}><Eyebrow>02 / Advisory system</Eyebrow><h2>One system.<br/><i>Four decisions.</i></h2><p>Every conversation moves through the same logic: establish the facts, name the constraint, structure the routes, then approach.</p></div>
-        <div className={styles.woSystemWheel}>{steps.map(([n,t,b],i)=><article key={n} style={{--i:i} as React.CSSProperties}><span>{n}</span><h3>{t}</h3><p>{b}</p><i>↗</i></article>)}</div>
+        <div className={styles.woSystemWheel}>{steps.map(([n,t,b])=><article key={n}><span>{n}</span><h3>{t}</h3><p>{b}</p><i>↗</i></article>)}</div>
       </section>
 
       <section className={styles.woCash} id="construction">
