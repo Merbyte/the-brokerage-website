@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
+import "./concepts-final/concepts.css";
 
 /*
  * V2 typography (design.md §4, MASTER.md §3.1). Manrope carries every
