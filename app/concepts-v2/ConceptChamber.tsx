@@ -1,6 +1,6 @@
-import { routes, situations, steps } from "../concept-data";
-import { Cta, ConceptFooter, DarkHeader, MobileHeader } from "../ConceptHeader";
-import styles from "../concepts.module.css";
+import { routes, situations, steps } from "./concept-data";
+import { Cta, ConceptFooter, DarkHeader, MobileHeader } from "./ConceptHeader";
+import styles from "./concepts.module.css";
 
 export default function ChamberConcept(){
  return <div className={styles.chamber}>
