@@ -55,7 +55,10 @@ export function RouteComparisonTable({ caption, rows, note }: RouteComparisonTab
               </th>
               <td className="py-4 pr-4 align-top text-table-cell">{row.relevantFor}</td>
               <td className="py-4 pr-4 align-top text-table-cell">{row.needsAssessing}</td>
-              <td className="py-4 align-top text-table-cell">
+              {/* Approved CTA wording is fixed, so the column is sized to
+                  the label rather than the label shortened to the column:
+                  clickable labels must not wrap (MASTER.md §2.6). */}
+              <td className="py-4 align-top text-table-cell whitespace-nowrap">
                 <a href={row.nextStepHref} className="text-text-primary underline underline-offset-[0.15em]">
                   {row.nextStepLabel}
                 </a>

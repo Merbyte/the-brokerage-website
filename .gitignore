@@ -35,3 +35,9 @@ Thumbs.db
 
 # Confidential internal business materials
 docs/reference/team_reference_document.docx
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo

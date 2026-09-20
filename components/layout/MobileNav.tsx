@@ -73,7 +73,7 @@ export function MobileNav({ id, open, onClose, navItems }: MobileNavProps) {
       aria-modal="true"
       aria-label="Primary"
       hidden={!open}
-      className={`md:hidden fixed inset-0 z-50 bg-surface-page flex flex-col transition-opacity duration-[var(--dur-base)] [transition-timing-function:var(--ease-standard)] ${
+      className={`fixed inset-0 z-50 bg-surface-page flex flex-col transition-opacity duration-[var(--dur-base)] [transition-timing-function:var(--ease-standard)] ${
         open ? "opacity-100" : "opacity-0"
       }`}
     >

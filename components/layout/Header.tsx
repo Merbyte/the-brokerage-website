@@ -38,44 +38,44 @@ export function Header({ brandLabel, brandHref = "/", navItems }: HeaderProps) {
 
       <Container size="wide">
         <div className="flex h-16 items-center justify-between">
-          <a href={brandHref} className="text-heading-s font-semibold text-text-primary no-underline">
+          <a
+            href={brandHref}
+            className="inline-flex min-h-12 items-center text-heading-s font-semibold text-text-primary no-underline"
+          >
             {brandLabel}
           </a>
 
-          <nav aria-label="Primary" className="hidden md:flex items-center gap-8">
-            <ul className="flex items-center gap-8">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    aria-current={item.current ? "page" : undefined}
-                    className={`text-body-s no-underline hover:underline underline-offset-[0.2em] ${
-                      item.current ? "text-text-primary font-medium" : "text-text-secondary"
-                    }`}
-                  >
-                    {item.label}
-                    {item.current ? <span className="sr-only"> (current page)</span> : null}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <Button href="/get-a-free-financing-assessment/" variant="primary" className="text-body-s">
+          {/*
+            The approved primary navigation carries eight destinations
+            whose labels need roughly 1700px alongside the wordmark and
+            the CTA, so an inline bar does not fit even at 1440px. The
+            full navigation therefore lives in the menu panel at every
+            width, and the bar keeps only a persistent conversion route.
+            Which destinations belong in a desktop bar is a founder
+            decision, not one to infer here.
+          */}
+          <div className="flex items-center gap-2">
+            <Button
+              href="/get-a-free-financing-assessment/"
+              variant="primary"
+              className="text-body-s max-md:hidden!"
+            >
               {PRIMARY_CTA_LABEL}
             </Button>
-          </nav>
 
-          <button
-            type="button"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-nav-panel"
-            onClick={() => setMenuOpen(true)}
-            className="md:hidden inline-flex h-12 w-12 items-center justify-center rounded-[var(--radius-control)] text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
-          >
-            <span className="sr-only">Open menu</span>
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
+            <button
+              type="button"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-panel"
+              onClick={() => setMenuOpen(true)}
+              className="inline-flex h-12 w-12 items-center justify-center rounded-[var(--radius-control)] text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+            >
+              <span className="sr-only">Open menu</span>
+              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
         </div>
       </Container>
 

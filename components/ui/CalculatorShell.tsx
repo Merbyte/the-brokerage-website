@@ -65,7 +65,9 @@ export function CalculatorShell() {
         className="rounded-[var(--radius-control)] border border-border-hairline bg-surface-secondary p-6"
       >
         <p className="text-label text-text-secondary">Estimated monthly repayment</p>
-        <p className="mt-2 font-figures text-display-l text-text-primary">S$ —</p>
+        {/* Reading scale, not display scale: a figure set large for impact
+            is a wealth-marketing tell and is prohibited (MASTER.md §4.5). */}
+        <p className="mt-2 font-figures text-heading-m text-text-primary">S$ —</p>
       </div>
 
       <Disclaimer tone="neutral">{CALCULATOR_DISCLAIMER}</Disclaimer>

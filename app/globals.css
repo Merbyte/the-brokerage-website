@@ -142,6 +142,34 @@
   /* --accent and --accent-on are identical in both contexts (MASTER.md §3.2) */
 }
 
+/*
+ * Desktop-only dark scope. The homepage hero is dark from 1024px up and
+ * light below it, because the mobile hero must stay on the light surface
+ * (design.md §5, MASTER.md §3.4 -- dark is the worst case for outdoor
+ * phone legibility, and this audience arrives outdoors). Values are
+ * identical to [data-surface="dark"] above, which remains their source of
+ * truth; they are repeated because CSS cannot media-gate one arm of a
+ * selector list.
+ */
+@media (min-width: 1024px) {
+  [data-surface-desktop="dark"] {
+    --text-primary: var(--white);
+    --text-secondary: var(--ink-on-dark-secondary);
+    --text-disabled: var(--navy-700);
+    --text-accent: var(--gold-300);
+    --surface-page: var(--navy-900);
+    --surface-raised: var(--navy-800);
+    --surface-secondary: var(--navy-800);
+    --border-hairline: var(--navy-700);
+    --border-strong: var(--ink-on-dark-secondary);
+    --focus-ring: var(--gold-300);
+    --state-error: var(--red-300);
+    --state-success: var(--green-300);
+    --state-warning: var(--amber-300);
+    --state-info: var(--blue-300);
+  }
+}
+
 @theme inline {
   --font-sans: var(--font-inter);
 
@@ -284,12 +312,17 @@
   }
 
   th {
+    font-weight: 600;
+    text-align: left;
+  }
+
+  /* Column headers are labels and are set as such. Row headers are names
+     -- a financing route read in capitals looks like a category tag. */
+  thead th {
     font-size: var(--fs-table-header);
     line-height: var(--lh-table-header);
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-weight: 600;
-    text-align: left;
   }
 
   small {

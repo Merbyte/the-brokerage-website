@@ -1,13 +1,24 @@
+import type { Metadata } from "next";
+
 import { Header, type NavItem } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/layout/Section";
-import { Button } from "@/components/ui/Button";
-import { FormField } from "@/components/ui/FormField";
-import { Disclaimer } from "@/components/ui/Disclaimer";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { RouteComparisonTable } from "@/components/ui/RouteComparisonTable";
 import { CalculatorShell } from "@/components/ui/CalculatorShell";
-import { ASSESSMENT_FORM_CONSENT, ASSESSMENT_FORM_DISCLAIMER } from "@/lib/constants";
+import { Hero } from "@/components/home/Hero";
+import { ProblemSet } from "@/components/home/ProblemSet";
+import { ConstructionBand } from "@/components/home/ConstructionBand";
+import { AdvisoryProcess } from "@/components/home/AdvisoryProcess";
+import { PathwayIndex } from "@/components/home/PathwayIndex";
+import { DirectVsAdvisory } from "@/components/home/DirectVsAdvisory";
+import { AssessmentCta } from "@/components/home/AssessmentCta";
+
+export const metadata: Metadata = {
+  title: "The Brokerage Advisory | Singapore Financing Advisory",
+  description:
+    "The Brokerage Advisory is a Singapore-based independent financing advisory that helps businesses understand their financing situation before deciding where and how to approach banks, financiers or capital providers.",
+};
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/", current: true },
@@ -20,154 +31,188 @@ const NAV_ITEMS: NavItem[] = [
   { label: "About", href: "/about/" },
 ];
 
-const FAQ_ITEMS = [
-  {
-    question: "What does a free financing assessment involve?",
-    answer:
-      "It is an initial discussion to understand your financing situation before identifying which routes may be worth exploring further.",
-  },
-  {
-    question: "Is The Brokerage Advisory a bank or lender?",
-    answer:
-      "No. The Brokerage Advisory is an independent advisory and does not lend directly or act as a bank or licensed moneylender.",
-  },
-];
-
 const ROUTE_ROWS = [
   {
-    route: "Business Financing",
-    relevantFor: "General working capital and business funding situations",
-    needsAssessing: "Cash flow position, financials and existing facilities",
+    route: "Business financing",
+    relevantFor: "Growth, operations, equipment or expansion",
+    needsAssessing: "Business profile, cash flow, existing facilities and documents",
     nextStepLabel: "Discuss Your Situation",
     nextStepHref: "/business-financing/",
   },
   {
-    route: "Trade Financing",
-    relevantFor: "Import/export, invoice and trade-cycle situations",
-    needsAssessing: "Trade cycle timing and receivables/payables structure",
-    nextStepLabel: "Discuss Your Situation",
+    route: "Trade financing",
+    relevantFor: "Supplier payments and receivables timing",
+    needsAssessing: "Invoices, contracts, counterparties and the trade cycle",
+    nextStepLabel: "Discuss Cash Flow",
     nextStepHref: "/trade-financing/",
   },
   {
-    route: "Construction & Engineering",
-    relevantFor: "Project-based contracting and engineering works",
-    needsAssessing: "Contract structure, bonding needs and project cash flow",
+    route: "Property-backed financing",
+    relevantFor: "Asset-backed or larger financing needs",
+    needsAssessing: "Ownership, valuation, existing debt and repayment capacity",
+    nextStepLabel: "Speak to a Specialist",
+    nextStepHref: "/property-financing/",
+  },
+  {
+    route: "Project financing",
+    relevantFor: "Contract execution and mobilisation",
+    needsAssessing: "The contract, payment terms, timing and supporting documents",
     nextStepLabel: "Discuss Your Project",
-    nextStepHref: "/construction-engineering-financing/",
+    nextStepHref: "/project-private-capital/",
+  },
+];
+
+const ROUTE_NOTE =
+  "This comparison is a guide to which conversation to have. It is not an indication of eligibility, availability, amount, rate, tenure or timing. Those depend on the information provided and the relevant financier's assessment.";
+
+const FAQ_ITEMS = [
+  {
+    question: "What does a financing advisory do?",
+    answer:
+      "It helps a business understand its financing situation before deciding where and how to approach a financier. The assessment comes first, and the discussion about possible routes follows from it.",
+  },
+  {
+    question: "Is The Brokerage Advisory a bank or lender?",
+    answer:
+      "No. The Brokerage Advisory is an independent financing advisory. It is not a bank, financial institution or licensed moneylender, and it does not lend.",
+  },
+  {
+    question: "What is a free financing assessment?",
+    answer:
+      "It is an initial discussion about your situation. It is not a financing approval, offer, commitment or guarantee, and there is no obligation to proceed.",
+  },
+  {
+    question: "Can you help after a bank rejection?",
+    answer:
+      "A previous decline is one of the more common reasons businesses get in touch. The assessment starts with understanding why the answer was no, before considering whether another route is worth pursuing.",
+  },
+  {
+    question: "Can you help construction and engineering companies?",
+    answer:
+      "Yes. Construction and engineering is a priority client segment, covering project mobilisation, working-capital timing, performance bonds and existing facility constraints.",
+  },
+  {
+    question: "Does an assessment guarantee financing?",
+    answer:
+      "No. A free financing assessment is an initial discussion only. It is not a financing approval, offer, commitment or guarantee. Any financing route depends on the information provided and the relevant financier's assessment.",
   },
 ];
 
 /**
- * Internal foundation-preview harness -- NOT the production homepage.
- * Demonstrates the reusable design-system primitives (tokens, Header,
- * Footer, Button, FormField, Disclaimer, FaqAccordion,
- * RouteComparisonTable, CalculatorShell) using approved copy only. Final
- * homepage content, structure and imagery are a separate, later task.
+ * Homepage -- editorial credibility narrative (design-system pages/home.md).
+ * Twelve bands carrying a diagnosis-first argument arc, with rhythm coming
+ * from surface-temperature changes and varied internal structure rather
+ * than repeated card grids. The two comparison modules are deliberately
+ * separated by the calculator band.
  */
-export default function FoundationPreviewPage() {
+export default function HomePage() {
   return (
     <>
       <Header brandLabel="The Brokerage Advisory" navItems={NAV_ITEMS} />
 
       <main id="main-content" className="flex-1">
-        <Section surface="page">
-          <Disclaimer tone="warning">
-            Internal design-foundation preview. This page demonstrates reusable components only and is not the
-            production homepage.
-          </Disclaimer>
+        <Hero />
 
-          <div className="mt-10">
-            <h1 className="text-display-l">Design foundation preview</h1>
-            <p className="mt-4 max-w-prose text-body-l text-text-secondary">
-              A working reference of the shared tokens, layout primitives and components available for building the
-              site.
+        <Section surface="page">
+          <ProblemSet />
+        </Section>
+
+        <Section surface="secondary">
+          <ConstructionBand />
+        </Section>
+
+        <Section surface="page">
+          <AdvisoryProcess />
+        </Section>
+
+        <Section surface="secondary">
+          <PathwayIndex />
+        </Section>
+
+        <Section surface="page" containerSize="wide">
+          <div className="max-w-prose">
+            <h2 className="text-heading-l text-text-primary">Compare possible financing routes at a glance.</h2>
+            <p className="mt-4 text-body-l text-text-secondary">
+              Different facilities solve different situations. The right route depends on your purpose, cash flow,
+              information, existing obligations and the relevant financier&rsquo;s assessment.
             </p>
           </div>
-        </Section>
 
-        <Section surface="secondary">
-          <h2 className="text-heading-l">Buttons</h2>
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Button variant="primary">Get a Free Financing Assessment</Button>
-            <Button variant="secondary">See How We Work</Button>
-            <Button variant="tertiary">Contact Us</Button>
-            <Button variant="primary" loading>
-              Get a Free Financing Assessment
-            </Button>
-            <Button variant="primary" disabled>
-              Get a Free Financing Assessment
-            </Button>
-          </div>
-        </Section>
-
-        <Section surface="page" containerSize="prose">
-          <h2 className="text-heading-l">Form fields</h2>
-          <div className="mt-6 flex flex-col gap-6">
-            <FormField label="Name" name="name" required autoComplete="name" />
-            <FormField label="Email" name="email" type="email" required autoComplete="email" />
-            <FormField
-              label="Phone number"
-              name="phone"
-              type="tel"
-              required
-              autoComplete="tel"
-              helpText="Include your country code if outside Singapore."
-            />
-            <FormField label="Message" name="message" as="textarea" required />
-            <FormField
-              label="Email"
-              name="email-error-demo"
-              type="email"
-              required
-              error="Enter a valid email address."
+          <div className="mt-10">
+            <RouteComparisonTable
+              caption="Qualitative comparison of financing routes and what each usually requires."
+              rows={ROUTE_ROWS}
+              note={ROUTE_NOTE}
             />
           </div>
-          <p className="mt-6 text-disclaimer text-text-secondary">{ASSESSMENT_FORM_CONSENT}</p>
-          <Disclaimer tone="neutral" className="mt-4">
-            {ASSESSMENT_FORM_DISCLAIMER}
-          </Disclaimer>
-        </Section>
 
-        <Section surface="secondary" containerSize="prose">
-          <h2 className="text-heading-l">Disclaimer and alert tones</h2>
-          <div className="mt-6 flex flex-col gap-4">
-            <Disclaimer tone="information">Informational note for contextual guidance.</Disclaimer>
-            <Disclaimer tone="warning">Warning-tone message for content requiring caution.</Disclaimer>
-            <Disclaimer tone="error">Error-tone message for form validation failures.</Disclaimer>
-            <Disclaimer tone="success">Success-tone message for confirmations.</Disclaimer>
+          <div className="mt-10">
+            <AssessmentCta />
           </div>
         </Section>
 
-        <Section surface="page">
-          <h2 className="text-heading-l">Qualitative route comparison</h2>
-          <div className="mt-6">
-            <RouteComparisonTable caption="Example financing routes and what they may involve" rows={ROUTE_ROWS} />
+        <Section surface="page" containerSize="wide">
+          <div className="max-w-prose">
+            <h2 className="text-heading-l text-text-primary">
+              Estimate a monthly repayment for planning purposes.
+            </h2>
+            <p className="mt-4 text-body-l text-text-secondary">
+              Use an illustrative estimate to understand how amount, rate and tenure can affect repayment. It is
+              not a quote or financing offer.
+            </p>
           </div>
-        </Section>
 
-        <Section surface="secondary">
-          <h2 className="text-heading-l">Calculator shell</h2>
-          <div className="mt-6">
+          <div className="mt-10">
             <CalculatorShell />
           </div>
-        </Section>
 
-        <Section surface="page" containerSize="prose">
-          <h2 className="text-heading-l">FAQ accordion</h2>
-          <div className="mt-6">
-            <FaqAccordion items={FAQ_ITEMS} />
-          </div>
+          <p className="mt-8">
+            <a
+              href="/tools/monthly-repayment-calculator/"
+              className="text-body font-medium text-text-primary underline underline-offset-[0.15em]"
+            >
+              Try the Repayment Calculator
+            </a>
+          </p>
         </Section>
 
         <Section surface="dark">
-          <h2 className="text-heading-l">Dark surface context</h2>
-          <p className="mt-4 max-w-prose text-body text-text-secondary">
-            Components read semantic tokens, so they render correctly when nested inside a dark-surface section
-            without any per-component dark-mode logic.
+          <DirectVsAdvisory />
+        </Section>
+
+        <Section surface="page">
+          <div className="max-w-prose">
+            <h2 className="text-heading-l text-text-primary">Questions we are usually asked first.</h2>
+          </div>
+
+          <div className="mt-8 max-w-prose">
+            <FaqAccordion items={FAQ_ITEMS} />
+          </div>
+
+          <p className="mt-8">
+            <a href="/faq/" className="text-body font-medium text-text-primary underline underline-offset-[0.15em]">
+              Read all frequently asked questions
+            </a>
           </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Button variant="primary">Get a Free Financing Assessment</Button>
-            <Button variant="secondary">See How We Work</Button>
+        </Section>
+
+        <Section surface="dark">
+          <div className="max-w-prose">
+            <h2 className="text-heading-l text-text-primary">
+              Have a financing situation that is not straightforward?
+            </h2>
+            <p className="mt-5 text-body-l text-text-secondary">
+              Start with a free initial assessment. We will understand the situation first, then discuss the
+              possible next steps.
+            </p>
+
+            <div className="mt-8">
+              <AssessmentCta />
+            </div>
+
+            <p className="mt-6 text-body text-text-secondary">
+              Assessment first. Clear next steps. No guarantee of approval.
+            </p>
           </div>
         </Section>
       </main>
