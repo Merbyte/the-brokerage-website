@@ -86,7 +86,7 @@ export default function EloqwntLevel(){
               <a href="#work" className={styles.textLink}>See the work <span>↓</span></a>
             </div>
           </div>
-          <div className={styles.heroOrb} aria-hidden="true"><div className={styles.orbCore}>DIAGNOSE</div><div className={styles.orbit one}/><div className={styles.orbit two}/><div className={styles.orbit three}/><span>ROUTE</span><span>STRUCTURE</span><span>APPROACH</span></div>
+          <div className={styles.heroOrb} aria-hidden="true"><div className={styles.orbCore}>DIAGNOSE</div><div className={`${styles.orbit} ${styles.one}`}/><div className={`${styles.orbit} ${styles.two}`}/><div className={`${styles.orbit} ${styles.three}`}/><span>ROUTE</span><span>STRUCTURE</span><span>APPROACH</span></div>
         </div>
         <div className={styles.heroRail}><span>THE BROKERAGE / 2026</span><span>DIAGNOSIS → STRUCTURE → APPROACH</span><span>SCROLL ↓</span></div>
       </section>
