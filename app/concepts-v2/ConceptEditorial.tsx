@@ -1,5 +1,5 @@
 import { routes, situations, steps, faq } from "../concept-data";
-import { Cta, LightHeader, MobileHeader } from "../ConceptHeader";
+import { Cta, ConceptFooter, LightHeader, MobileHeader } from "../ConceptHeader";
 import styles from "../concepts.module.css";
 
 export default function EditorialConcept(){
@@ -24,5 +24,6 @@ export default function EditorialConcept(){
    <section id="questions" className={styles.edFaq}><div><div className={styles.overline}>06 / Questions</div><h2>The questions that usually come <i>first.</i></h2></div><div>{faq.map(([q,a])=><details key={q}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></section>
    <section id="start" className={styles.edClose}><div className={styles.overline}>07 / Start here</div><h2>Have a financing situation that is <i>not straightforward?</i></h2><p>Start with a free initial assessment.</p><Cta/></section>
   </main>
+  <ConceptFooter/>
  </div>;
 }
