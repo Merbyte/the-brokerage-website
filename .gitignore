@@ -29,3 +29,6 @@ Thumbs.db
 .claude/cache/
 .claude/logs/
 .claude/sessions/
+
+# Local Claude Code runtime state
+.claude/
