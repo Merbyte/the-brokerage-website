@@ -1,5 +1,5 @@
 import { routes, situations, steps } from "../concept-data";
-import { Cta, LightHeader, MobileHeader } from "../ConceptHeader";
+import { Cta, ConceptFooter, LightHeader, MobileHeader } from "../ConceptHeader";
 import styles from "../concepts.module.css";
 
 export default function WorksConcept(){
@@ -20,5 +20,6 @@ export default function WorksConcept(){
 
    <section id="start" className={styles.woClose}><div className={styles.woCloseGraphic}><span>+</span></div><div className={styles.overline}>06 / Start with the situation</div><h2>Have a financing situation that is <i>not straightforward?</i></h2><p>Start with a free initial assessment.</p><Cta/></section>
   </main>
+  <ConceptFooter dark/>
  </div>;
 }
