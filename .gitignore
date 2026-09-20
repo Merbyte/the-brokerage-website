@@ -32,3 +32,6 @@ Thumbs.db
 
 # Local Claude Code runtime state
 .claude/
+
+# Confidential internal business materials
+docs/reference/team_reference_document.docx
